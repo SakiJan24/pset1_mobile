@@ -14,7 +14,8 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
-import com.example.nav.data.UserInfo
+import com.example.nav.data.CharacterInfo
+import com.example.nav.ui.CharacterViewModel
 import com.example.nav.ui.screens.DetailsScreen
 import com.example.nav.ui.screens.HomeScreen
 import com.example.nav.ui.screens.ListScreen
@@ -27,10 +28,13 @@ data object HomeRoute : NavKey
 data object ListRoute : NavKey
 
 @Serializable
-data class DetailsRoute(val usr: UserInfo) : NavKey
+data class DetailsRoute(val usr: CharacterInfo) : NavKey
 
 @Composable
-fun NavigationHost(modifier: Modifier = Modifier) {
+fun NavigationHost(
+    modifier: Modifier = Modifier,
+    characterViewModel: CharacterViewModel
+) {
     val context = LocalContext.current
     val backstack = rememberNavBackStack(HomeRoute)
     NavDisplay(
@@ -65,9 +69,12 @@ fun NavigationHost(modifier: Modifier = Modifier) {
                 }
 
                 is ListRoute -> NavEntry(key) {
-                    ListScreen(onNavigate = { usr ->
-                        backstack.add(DetailsRoute(usr))
-                    })
+                    ListScreen(
+                        characterViewModel = characterViewModel,
+                        onNavigate = { usr ->
+                            backstack.add(DetailsRoute(usr))
+                        }
+                    )
                 }
 
                 is DetailsRoute -> NavEntry(key) {

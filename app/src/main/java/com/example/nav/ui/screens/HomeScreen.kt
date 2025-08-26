@@ -14,7 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.nav.R // Import R class
 
 @Composable
 fun HomeScreen(
@@ -32,13 +34,13 @@ fun HomeScreen(
             tint = MaterialTheme.colorScheme.primary
         )
         Text(
-            "I'm in Home Screen",
+            stringResource(id = R.string.home_screen_title),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.primary
         )
         Spacer(Modifier.height(80.dp))
         Button(onClick = { onNavigate() }) {
-            Text("Go to List")
+            Text(stringResource(id = R.string.go_to_list_button))
         }
     }
 }

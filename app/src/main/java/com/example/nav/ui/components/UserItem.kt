@@ -1,6 +1,5 @@
 package com.example.nav.ui.components
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -16,26 +15,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.nav.data.UserInfo
+import com.example.nav.data.CharacterInfo
 
 @Composable
 fun UserItem(
     modifier: Modifier = Modifier,
-    usr: UserInfo,
+    // El parámetro espera un objeto CharacterInfo
+    usr: CharacterInfo,
+    onUserClick: (CharacterInfo) -> Unit
 ) {
-    val context = LocalContext.current
     ListItem(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onUserClick(usr) },
         headlineContent = {
             Text(usr.name, style = MaterialTheme.typography.bodyLarge)
         }, supportingContent = {
             Column {
-                Text(usr.species, style = MaterialTheme.typography.bodyMedium)
-                Text(usr.location.name, style = MaterialTheme.typography.labelSmall)
+                //
+                Text(usr.status, style = MaterialTheme.typography.bodyMedium)
             }
         }, trailingContent = {
             Icon(Icons.Default.ArrowForward, contentDescription = null)
@@ -50,5 +50,6 @@ fun UserItem(
                     )
                     .size(64.dp)
             )
-        })
+        }
+    )
 }

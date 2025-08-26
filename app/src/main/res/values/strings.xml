@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Nav</string>
+    <string name="Taller_1_movil">Nav</string>
+
+    <!-- HomeScreen -->
+    <string name="home_screen_title">En la pantalla de bienvenida</string>
+    <string name="go_to_list_button">Ir a la lista de personajes</string>
+
+    <!-- ListScreen -->
+    <string name="list_screen_toast_navigating">Navegando a los detalles</string>
+    <string name="list_screen_header_characters">Personajes: %1$d</string>
+    <string name="list_screen_error_message">Error: %1$s</string>
+    <string name="list_screen_empty_message">No se encontraron personajes. Por favor, inténtalo de nuevo más tarde.</string>
+
+    <!-- DetailsScreen Labels -->
+    <string name="details_label_name">Name: %1$s</string>
+    <string name="details_label_gender">Gender: %1$s</string>
+    <string name="details_label_location">Location: %1$s</string>
+    <string name="details_label_origin">Origin: %1$s</string>
+    <string name="details_label_species">Species: %1$s</string>
+    <string name="details_label_status">Status: %1$s</string>
+
 </resources>

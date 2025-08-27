@@ -1,4 +1,4 @@
-// ui/screens/DetailsScreen.kt
+
 
 package com.example.nav.ui.screens
 
